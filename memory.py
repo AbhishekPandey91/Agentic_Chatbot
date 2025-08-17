@@ -817,7 +817,7 @@ def main():
         initial_sidebar_state="expanded"
     )
     
-    # Custom CSS for better styling
+    # Custom CSS for better styling - FIXED MEMORY SYSTEM BACKGROUND
     st.markdown("""
     <style>
     .main-header {
@@ -829,11 +829,17 @@ def main():
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     .memory-stats {
-        background-color: #f8f9fa;
-        border: 1px solid #dee2e6;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: 1px solid #667eea;
         border-radius: 8px;
         padding: 15px;
         margin: 10px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .memory-stats strong {
+        color: #ffffff;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
     .user-profile {
         background-color: #e3f2fd;
@@ -848,7 +854,7 @@ def main():
     # Header
     st.markdown("""
     <div class="main-header">
-        <h1 style="color: white; margin: 0; font-size: 2.5rem;">🧠 Memory-Enhanced Agentic Assistant</h1>
+        <h1 style="color: white; margin: 0; font-size: 2.5rem;"> Agentic Assistant</h1>
         <p style="color: white; opacity: 0.9; margin: 0; font-size: 1.1rem;">Intelligent Task Orchestration with Conversational Memory</p>
     </div>
     """, unsafe_allow_html=True)
@@ -863,7 +869,7 @@ def main():
         
         # Add welcome message with personalized greeting
         greeting = st.session_state.orchestrator.memory_manager.get_personalized_greeting()
-        welcome_msg = f"{greeting} I'm your memory-enhanced AI assistant. I can help with simple questions, complex task planning, and I'll remember our conversations for better assistance over time."
+        welcome_msg = f"{greeting} I'm your AI assistant. I can help with simple questions, complex task planning, and I'll remember our conversations for better assistance over time."
         
         st.session_state.messages.append({
             "role": "assistant",
@@ -1059,7 +1065,7 @@ def main():
         
         memory_manager = st.session_state.orchestrator.memory_manager
         
-        # Memory statistics
+        # Memory statistics with FIXED BACKGROUND
         st.markdown("""
         <div class="memory-stats">
             <strong>📊 Memory Statistics</strong><br>
