@@ -1,23 +1,22 @@
-import time
-import random
+import streamlit as st
+from agents import AGENTS
+from utils import decompose_task
 
-class MockAgent:
-    def __init__(self, name):
-        self.name = name
+st.set_page_config(page_title="Agentic Chatbot Demo", page_icon="🤖")
 
-    def run(self, task):
-        logs = []
-        logs.append(f"[{self.name}] Started task: {task}")
-        for step in range(1, 4):
-            time.sleep(0.5)  
-            logs.append(f"[{self.name}] Progress {step*33}%...")
-        logs.append(f"[{self.name}] Completed task: {task} ✅")
-        return logs
+st.title("🤖 Agentic Chatbot Demo")
+st.write("Enter a query and watch how it breaks into subtasks with agent logs!")
 
+user_input = st.text_input("Enter your query:", placeholder="e.g., Organize a robotics workshop")
 
-AGENTS = {
-    "venue": MockAgent("VenueAgent"),
-    "email": MockAgent("EmailAgent"),
-    "poster": MockAgent("PosterAgent"),
-    "default": MockAgent("GeneralAgent"),
-}
+if st.button("Run"):
+    if user_input:
+        tasks = decompose_task(user_input)
+        for task, agent_key in tasks:
+            st.markdown(f"### 🔹 Task: {task}")
+            agent = AGENTS.get(agent_key, AGENTS["default"])
+            logs = agent.run(task)
+            for log in logs:
+                st.write(log)
+    else:
+        st.warning("Please enter a query first.")
