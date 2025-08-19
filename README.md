@@ -6,14 +6,13 @@ gets broken into subtasks → each handled by a mock agent → progress logs dis
 ---
 
 ## 🚀 Live Demo
-👉 [Streamlit Cloud Link Here After Deployment]
+👉 https://robo-demo-dip.streamlit.app/
 
 ---
 
 ## ⚡ Tech Stack
 - **UI**: Streamlit
-- **Agents**: Mocked (future → Gemini + LangGraph)
-- **Future-Ready**: LangSmith, PostgreSQL, Redis, Chroma, Gmail API, Calendar API, UPI Lite
+- **Agents**: Mocked 
 - **Deployment**: Docker & Streamlit Cloud
 
 ---
