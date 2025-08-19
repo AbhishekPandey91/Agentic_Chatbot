@@ -1,6 +1,5 @@
 import streamlit as st
 import os
-from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.graph import StateGraph, MessagesState, START, END
 from typing import List, TypedDict
@@ -11,9 +10,8 @@ import time
 class MyState(MessagesState):
     subtasks: List[str]
 
-# Load env
-load_dotenv()
-api_key = os.getenv("GEMINI_API_KEY")
+# get geimini api key from streamlit secret
+api_key = streamlit.secrets.get("GEMINI_API_KEY")
 
 # Configure Gemini
 llm = ChatGoogleGenerativeAI(
