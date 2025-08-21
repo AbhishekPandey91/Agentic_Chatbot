@@ -24,3 +24,9 @@ python-dotenv
 # Machine Learning Utilities
 numpy
 scikit-learn
+
+streamlit>=1.24.0
+python-dotenv>=1.0.0
+langchain-google-genai>=0.1.0
+langgraph>=0.2.0
+langchain-core>=0.1.0
