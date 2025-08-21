@@ -1,28 +1,32 @@
-import os
-import time
-import json
 import streamlit as st
-from typing import List, TypedDict
+import os
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.graph import StateGraph, MessagesState, START, END
+from typing import List, TypedDict
+import json
+import time
 
+# Custom state with extra "subtasks" field
 class MyState(MessagesState):
     subtasks: List[str]
 
+# get geimini api key from streamlit secret
 api_key = st.secrets.get("GEMINI_API_KEY")
 
-# Configuring Gemini
-model = ChatGoogleGenerativeAI(
+# Configure Gemini
+llm = ChatGoogleGenerativeAI(
     model="gemini-1.5-flash",
     api_key=api_key
 )
 
 # Mock agents
-def booking_agent(task): return f"Booking Venue for Events : {task}"
-def communication_agent(task): return f"Sending Emails to Participants : {task}"
-def outreach_agent(task): return f"Outreach: {task}"
-def calendar_agent(task): return f"Scheduling tasks : {task}"
-def research_agent(task): return f"Researching the Topics : {task}"
+def booking_agent(task): return f"📌 Booking venue: {task}"
+def communication_agent(task): return f"✉️ Sending emails: {task}"
+def design_agent(task): return f"🎨 Designing: {task}"
+def outreach_agent(task): return f"📣 Outreach: {task}"
+def calendar_agent(task): return f"📅 Scheduling: {task}"
+def research_agent(task): return f"🔍 Researching: {task}"
+def generic_agent(task): return f"⚡ Generic agent handled: {task}"
 
 # generate subtasks from LLM
 def generate_subtask_list(state: MyState):
@@ -45,9 +49,10 @@ def generate_subtask_list(state: MyState):
     User query: "{query}"
     """
 
-    response = model.invoke(subtask_prompt)
+    response = llm.invoke(subtask_prompt)
     raw = response.content.strip()
 
+    # --- Sanitize common Gemini outputs ---
     if raw.startswith("```json"):
         raw = raw.strip("`").replace("json", "", 1).strip()
     elif raw.startswith("```"):
@@ -83,7 +88,7 @@ def subtask_router(state: MyState):
         elif agent == "research":
             agent_output = research_agent(task)
         else:
-            agent_output = f"Generic agent handled: {task}"
+            agent_output = f"⚡ Generic agent handled: {task}"
 
         results.append(AIMessage(f"Calling {agent} agent..."))
         results.append(AIMessage(content=agent_output))
