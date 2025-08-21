@@ -225,7 +225,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Author**: Abhishek Pandey
 - **GitHub**: [@AbhishekPandey91](https://github.com/AbhishekPandey91)
-- **Project Link**: [https://github.com/AbhishekPandey91/memory-enhanced-agentic-assistant](https://github.com/your-username/memory-enhanced-agentic-assistant)
+- **Project Link**: [https://github.com/AbhishekPandey91/Agentic_Chatbot](https://github.com/AbhishekPandey91/Agentic_Chatbot)
 
 ---
 
