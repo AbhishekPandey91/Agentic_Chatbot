@@ -1,19 +1,26 @@
+# LangChain Core
+langchain
+langchain-core
 
-streamlit>=1.28.0
-asyncio-mqtt>=0.11.0
+# OpenAI Integration
+langchain-openai
+openai
 
+# Anthropic Integration
+langchain-anthropic
 
-langchain-core>=0.1.0
-langchain-groq>=0.1.0
-langgraph>=0.0.40
+# Google Gemini (PaLM) Integration
+langchain-google-genai
+google-generativeai
 
+# Hugging Face Integration
+langchain-huggingface
+transformers
+huggingface-hub
 
-python-dotenv>=1.0.0
-typing-extensions>=4.8.0
+# Environment Variable Management
+python-dotenv
 
-
-python-dateutil>=2.8.2
-
-requests>=2.31.0
-numpy>=1.24.0
-pandas>=2.0.0
+# Machine Learning Utilities
+numpy
+scikit-learn
