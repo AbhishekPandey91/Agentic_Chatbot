@@ -85,7 +85,7 @@ The system uses LangGraph to create a sophisticated workflow that processes diff
    ```bash
    git clone https://github.com/AbhishekPandey91/Agentic_Chatbot.git
 
-   cd memory-enhanced-agentic-assistant
+   cd Agentic_Chatbot
    ```
 
 2. **Install dependencies**
